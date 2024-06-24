@@ -38,6 +38,9 @@ namespace ariel {
     // * operator
     Graph operator*(const Graph& g1, const Graph& g2);
 
+    // << operator
+    ostream& operator<<(std::ostream& os, const Graph& g);
+
 } // ariel
 
 #endif //GRAPHOPERATORS_H

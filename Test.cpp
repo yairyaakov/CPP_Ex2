@@ -450,6 +450,18 @@ TEST_CASE("Test graph multiplication and output operator")
     CHECK(ss.str() == "Graph with 3 vertices and 4 edges.\n[0, 4, 0]\n[4, 0, 4]\n[0, 4, 0]\n");
 }
 
+TEST_CASE("Test invalid graph")
+{
+    ariel::Graph g;
+    vector<vector<int>> graph = {
+        {0, 1, 2, 0},
+        {1, 0, 3, 0},
+        {2, 3, 0, 4},
+        {0, 0, 4, 0},
+        {0, 0, 0, 5}};
+    CHECK_THROWS(g.loadGraph(graph));
+}
+
 
 
 

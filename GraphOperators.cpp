@@ -182,4 +182,26 @@ namespace ariel {
         return graphResult;
     }
 
+	ostream &operator<<(ostream &os, const Graph &graph)
+    {
+        // Print the number of vertices and edges
+        os << "Graph with " << graph.getNumVertices() << " vertices and " << graph.countEdges() << " edges." << std::endl;
+
+        // Print the adjacency matrix
+        for (size_t i = 0; i < graph.getNumVertices(); i++)
+        {
+            os << "[";
+            for (size_t j = 0; j < graph.getNumVertices(); j++)
+            {
+                os << graph[i][j];
+                if (j < graph.getNumVertices()-1)
+                {
+                    os << ", ";
+                }
+            }
+            os << "]" << std::endl;
+        }
+        return os;
+    }
+
 } // ariel
