@@ -32,6 +32,12 @@ namespace ariel {
     // != operator
     bool operator!=(const Graph& g1, const Graph& g2);
 
+    // * scalar operator
+    Graph operator*(const Graph& g1, int scalar);
+
+    // * operator
+    Graph operator*(const Graph& g1, const Graph& g2);
+
 } // ariel
 
 #endif //GRAPHOPERATORS_H

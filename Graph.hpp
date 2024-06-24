@@ -96,12 +96,6 @@ namespace ariel
     	// *= operator
     	Graph& operator*=(const Graph& graph2);
 
-        // * scalar operator
-        friend Graph operator*(const Graph& g1, int scalar);
-
-        // * operator
-        friend Graph operator*(const Graph& g1, const Graph& g2);
-
         // << operator
         friend ostream& operator<<(std::ostream& os, const Graph& g);
     };

@@ -129,4 +129,57 @@ namespace ariel {
         return graph2 >= graph1;
     }
 
+  // * scalar operator
+    Graph operator*(const Graph &graph1, int scalar)
+    {
+        size_t numVertice = graph1.getNumVertices();
+
+        // Create a new graph to store the result
+        Graph graphResult;
+
+        vector<vector<int>> matrixResult(numVertice, vector<int>(numVertice, 0));
+
+        for (size_t i = 0; i < numVertice; i++)
+        {
+            for (size_t j = 0; j < numVertice; j++)
+            {
+                matrixResult[i][j] = graph1[i][j] * scalar;
+            }
+        }
+        graphResult.loadGraph(matrixResult);
+        return graphResult;
+    }
+
+    // * operator
+    Graph operator*(const Graph &graph1, const Graph &graph2)
+    {
+        if(graph1.getNumVertices() != graph2.getNumVertices())
+        {
+            throw std::invalid_argument("Graphs aren't the same size");
+        }
+
+        size_t numVertice = graph1.getNumVertices();
+
+        // Create a new graph to store the result
+        Graph graphResult;
+
+        vector<vector<int>> matrixResult(numVertice, vector<int>(numVertice, 0));
+
+        for(size_t i = 0; i < numVertice; i++)
+        {
+            for (size_t j = 0; j < numVertice; j++)
+            {
+                for (size_t k = 0; k < numVertice; k++)
+                {
+                    if(i != j)
+                    {
+                        matrixResult[i][j] += graph1[i][k] * graph2[k][j];
+                    }
+                }
+            }
+        }
+        graphResult.loadGraph(matrixResult);
+        return graphResult;
+    }
+
 } // ariel
